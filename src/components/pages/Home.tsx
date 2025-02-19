@@ -57,7 +57,6 @@ const INITIAL_TASKS: Task[] = [
     priority: "High",
   },
 ];
-
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>(INITIAL_TASKS);
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -96,7 +95,7 @@ export default function Home() {
   return (
     <div className="p-4">
       <motion.div
-        className="mb-12 flex flex-col sm:flex-row gap-4 bg-gray-50 p-6 rounded-xl shadow-lg"
+        className="max-w-screen mb-16 flex flex-col sm:flex-row gap-4 bg-gray-100 p-6 rounded-2xl shadow-lg"
         initial={{ opacity: 0, y: 0 }}
         animate={{ opacity: 1, y: 10 }}
         transition={{ duration: 0.8, delay: 0.1 }}
@@ -106,10 +105,11 @@ export default function Home() {
           placeholder="Search tasks..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="flex-grow text-lg rounded-md border-2 border-emerald-600 focus:border-emarald-800 focus:ring focus:ring-violet-200 focus:ring-opacity-50"
+          className="flex-grow text-lg rounded-md border-2 border-emerald-600 focus:border-emerald-800 focus:ring focus:ring-violet-200 focus:ring-opacity-50 relative pl-10 w-full"
         />
-        <Select value={selectedPriority} onValueChange={setSelectedPriority} >
-          <SelectTrigger className="w-32 rounded-md border-2 border-emerald-600 focus:border-emarald-800 focus:ring focus:ring-violet-200 focus:ring-opacity-50">
+
+        <Select value={selectedPriority} onValueChange={setSelectedPriority}>
+          <SelectTrigger className="w-full sm:w-32 rounded-md border-2 border-emerald-600 focus:border-emerald-800 focus:ring focus:ring-violet-200 focus:ring-opacity-50">
             <SelectValue placeholder="Select Priority" />
           </SelectTrigger>
           <SelectContent>
@@ -121,7 +121,7 @@ export default function Home() {
         </Select>
       </motion.div>
       <motion.div
-        className="mb-12 flex flex-col sm:flex-row gap-4 bg-white p-6 rounded-xl shadow-lg"
+        className="mb-12 flex flex-col sm:flex-row gap-4 bg-gray-100 p-6 rounded-xl shadow-lg"
         initial={{ opacity: 0, y: 60 }}
         animate={{ opacity: 1, y: -30 }}
         transition={{ duration: 0.8, delay: 0.1 }}
@@ -144,3 +144,4 @@ export default function Home() {
     </div>
   );
 }
+

@@ -27,6 +27,9 @@ export function Column({ column, tasks, index }: ColumnProps) {
       <div
         ref={setNodeRef}
         className="flex flex-col rounded-xl bg-white p-4 min-h-screen"
+        style={{
+          width: "280px",
+        }}
       >
         <h2
           className={`${titleColorClass} mb-4 font-semibold border-b-4 border-solid shadow-2xl rounded-md p-4 text-center`}
@@ -37,9 +40,14 @@ export function Column({ column, tasks, index }: ColumnProps) {
           {column.title}
         </h2>
         <div className="flex flex-1 flex-col gap-4">
-          {tasks.map((task) => (
-            <Card key={task.id} task={task} />
-          ))}
+          {tasks.length === 0 ? (
+            <div className="flex justify-center items-center text-gray-500">
+            </div>
+          ) : (
+            tasks.map((task) => (
+              <Card key={task.id} task={task} />
+            ))
+          )}
         </div>
       </div>
     </div>
